@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link href='fullcalendar/fullcalendar.css' rel='stylesheet' />
+<link rel="stylesheet" type="text/css" href="css/iosQuery.css">
+<script src='lib/jquery.min.js'></script>
+<script src='fullcalendar/fullcalendar.min.js'></script>
+<script src='fullcalendar/gcal.js'></script>
+<script>
+	$(document).ready(function() {
+		var date = new Date();
+		var d = date.getDate();
+		var m = date.getMonth();
+		var y = date.getFullYear();
+		
+		$('#msg').hide();
+		
+		$('#calendar').fullCalendar({
+			header: {
+				left: 'prev,next',
+				center: 'title',
+				right: 'today'
+			},
+			dayClick: function(date, allDay, jsEvent, view) {
+				$('.pc-alert, .mobile-alert').hide(); 
+				var d1 = new Date();
+				var d2 = date;
+				if (d1.setHours(0,0,0,0) <= d2.setHours(0,0,0,0)) {
+					var dateroll = $(this).attr('data-date');
+					$("#date").val(dateroll);
+					$("td.fc-day").removeAttr('style');
+					$(this).css('background-color', '#c1c589');
+				} ;
+			},
+			
+			//events
+//			events: [
+//				{
+//					},
+//				{
+//					title: 'full',
+//					start: new Date(2014, 3, 4),
+//					//end: new Date(2014, 3, 8)
+//				},
+//				{
+//					title: 'full',
+//					start: new Date(y, m, 2, 15, 1),
+//					//allDay: false
+//				}
+//			],	
+//			// US Holidays
+//			events: 'http://www.google.com/calendar/feeds/usa__en%40holiday.calendar.google.com/public/basic',
+		
+			loading: function(bool) {
+				if (bool) {
+					$('#loading').show();
+				}else{
+					$('#loading').hide();
+				}
+			}
+			
+		});
+		
+	});
+	function chkDate() {
+        var date = new Date($("#date").val());
+        var end = new Date("2014-06-01");
+        var winwidth = $(window).width();
+		
+		if ( winwidth > 480){
+			if (date && new Date(end - date)<0) {
+					$('.pc-alert').show();
+					return false;
+			}
+			else {
+					$('.pc-alert').hide();
+					return true;
+			}
+		}
+		else{
+			if (date && new Date(end - date)<0) {
+					$('.mobile-alert').show();
+					window.scrollTo(0, 0);
+					return false;
+			}
+			else {
+					$('.mobile-alert').hide();
+					return true;
+			}			
+			
+		}
+		
+}
+
+$(window).resize(function() {
+ 	$('.pc-alert, .mobile-alert').hide(); 
+});
+</script>
+</head>
+<body>
+<div class="container clearfix">
+	<h1 class="title">SICC Online Restaurant Reservation</h1>
+	<ul class="form mobile-alert">
+		<li class="flexbox">Sorry, there is no place available.</li>
+	</ul>
+	<div id='loading' style='display:none'>loading...</div>
+	<div class="flexchange">
+		<section id='calendar'></section>
+		<form class="flex1">
+		<section class="order-deatil">
+			<h2 class="order-title">ISLAND</h2>
+			<ul class="form">
+				<li class="flexbox">
+					<label>Restaurant</label>
+					<div class="flex1">
+						<select name="outlet">
+							<option value="0">--</option>
+							<option value="1">SILK</option>
+							<option value="2">EAGLE</option>
+						</select>
+					</div>
+				</li>
+				<li class="flexbox">
+					<label>Resrv. Date</label>
+					<div class="flex1">
+						<input class="flex1" type="text" readonly id="date" placeholder="Select Date in Table">
+					</div>
+				</li>
+				<li class="flexbox">
+					<label>Meal Period</label>
+					<div class="flex1">
+						<select name="booktime">
+							<option value="17:00" selected="">17:00</option>
+							<option value="17:15">17:15</option>
+							<option value="17:30">17:30</option>
+							<option value="17:45">17:45</option>
+							<option value="18:00">18:00</option>
+							<option value="18:15">18:15</option>
+							<option value="18:30">18:30</option>
+							<option value="18:45">18:45</option>
+							<option value="19:00">19:00</option>
+							<option value="19:15">19:15</option>
+							<option value="19:30">19:30</option>
+							<option value="19:45">19:45</option>
+							<option value="20:00">20:00</option>
+							<option value="20:15">20:15</option>
+							<option value="20:30">20:30</option>
+							<option value="20:45">20:45</option>
+							<option value="21:00">21:00</option>
+							<option value="21:15">21:15</option>
+							<option value="21:30">21:30</option>
+						</select>
+					</div>
+				</li>
+				<li class="flexbox">
+					<label>No. of Adults</label>
+					<div class="flex1">
+						<select name="bookgst">
+							<option value="1" selected="">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10</option>
+							<option value="11">11</option>
+							<option value="12">12</option>
+						</select>
+					</div>
+				</li>
+				<li class="flexbox">
+					<label>No. of Children</label>
+					<div class="flex1">
+						<select name="bookgst">
+							<option value="0" selected="">0</option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10</option>
+							<option value="11">11</option>
+							<option value="12">12</option>
+						</select>
+					</div>
+				</li>
+			</ul>
+			<a href="confrim.html" class="fc-button fc-state-default fc-corner-left fc-corner-right fc-state-hover btnCheck"  onclick="return chkDate();">Check Availability</a>
+			<div class="pc-alert">Sorry, there is no place available.</div>
+		</section>
+		</form>
+	</div>
+</div>
+<footer>Copyright © 2014 The Singapore Island Country Club. All Rights Reserved.<br>
+Powered By Next Generation Technologies Pte Ltd</footer>
+</body>
+</html>

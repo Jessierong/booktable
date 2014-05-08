@@ -1,0 +1,97 @@
+/*************
+    common
+**************/
+* { box-sizing: border-box; margin: 0; padding: 0; list-style: none; font-family: Arial; }
+.clearfix:after { content: " "; display: block; clear: both; visibility: hidden; line-height: 0; height: 0; font-size: 0; }
+.overflow { overflow: auto; -webkit-overflow-scrolling: touch; }
+.textoverflow { overflow: hidden; word-break: keep-all; white-space: nowrap; text-overflow: ellipsis; }
+/*boxshadow*/
+.boxshadow10 { -moz-box-shadow: 0 0 20px rgba(0,0,0,.1); -webkit-box-shadow: 0 0 20px rgba(0,0,0,.1); -ms-box-shadow: 0 0 20px rgba(0,0,0,.1); -o-box-shadow: 0 0 20px rgba(0,0,0,.1); box-shadow: 0 0 20px rgba(0,0,0,.1) }
+/*flex*/
+.flexbox { display: -moz-box; display: -webkit-box; display: box; }
+.flexboxvertical { -moz-box-orient: vertical; -webkit-box-orient: vertical; box-orient: vertical; }
+.flex1 { -moz-box-flex: 1; -webkit-box-flex: 1; box-flex: 1; }
+.flex2 { -moz-box-flex: 2; -webkit-box-flex: 2; box-flex: 2; }
+/*form list style*/
+.form { color: #666 }
+.form li { border: 1px solid #e0d39f; border-bottom: none; padding: .6em; line-height: 1.6em; background: #fff; }
+.form li:first-child { border-radius: .4em .4em 0 0 }
+.form li:last-child { border-bottom: 1px solid #e0d39f; border-radius: 0 0 .4em .4em }
+.form label { font-size: .8em; font-weight: 700; display: inline-block; width: 8.5em; }
+.form input, .form select, .form textarea { border: none; background: transparent; font-size: 1em; line-height: 1.6em; color: #666; vertical-align: middle; width: 100%; }
+.mark{color:#F00}
+/*////////////////////////////////////////////////////////////*/
+body { background: url(../img/bg.jpg) #fefded 0 0 fixed; }
+h1.title { background: #54340a; color: #B49823; border-radius: .2em .2em 0 0; padding: .2em .4em; margin-bottom: .4em; line-height: 1.6; border-bottom: 2px solid #e0c967; font-family: "Times New Roman", Times, serif; }
+.container { margin: 20px auto; width:900px; background: #fefdeb; padding-bottom: 1em; border-radius: .2em; box-shadow: 0 5px 10px rgba(0,0,0,.1) }
+/****** calendar **********/
+#loading{margin: 0 1em .4em; text-align: center;}
+#calendar { width: 550px;}
+.fc-grid th { text-align: center; background: #b49823; color: #fff; }
+.fc-content { background: #fff url(../img/logo.png) no-repeat 50% 64%; background-size: auto 80%; border-radius: .6em; }
+.fc-day { background: rgba(255,255,255,.9); }
+.fc-day-number { color: #54340a }
+.fc-event { border: 1px solid #931200; background-color: #931200; }
+.fc-header .fc-button { margin-bottom: .4em; }
+.fc-state-highlight { background: #f9f0cd; }
+.fc-state-default { background: #a2865b; /* Old browsers */ background: -moz-linear-gradient(top, #a2865b 0%, #8e784b 100%); /* FF3.6+ */ background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #a2865b), color-stop(100%, #8e784b)); /* Chrome,Safari4+ */ background: -webkit-linear-gradient(top, #a2865b 0%, #8e784b 100%); /* Chrome10+,Safari5.1+ */ background: -o-linear-gradient(top, #a2865b 0%, #8e784b 100%); /* Opera 11.10+ */ background: -ms-linear-gradient(top, #a2865b 0%, #8e784b 100%); /* IE10+ */ background: linear-gradient(to bottom, #a2865b 0%, #8e784b 100%); /* W3C */ color: #fbf3d4; text-shadow: 0 1px 1px #917955 }
+.fc-widget-header, .fc-widget-content { border: 1px solid #e0d39f; }
+.fc-past{ background-image:url(../img/slash.png); background-position:center; background-size:100% 100%; cursor:no-drop }
+table.fc-border-separate tr:first-child th:first-child { border-radius: .4em 0 0 0; }
+table.fc-border-separate tr:first-child th:last-child { border-radius: 0 .4em 0 0; }
+table.fc-border-separate tr:last-child td:first-child { border-radius: 0 0 0 .4em; }
+table.fc-border-separate tr:last-child td:last-child { border-radius: 0 0 .4em 0; }
+/*************/
+.btnCheck { display: block; text-align: center; font-size: 1.6em;}
+.btnCheck:active { outline: 0; box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05); }
+
+.order-title { color: #960; font-family: "Times New Roman", Times, serif; margin-bottom:.4em }
+
+.order-deatil .form{ margin-bottom:.8em}
+.order-comfirm{width:340px;}
+.photo{ background:#fff; border:1px solid #ccc; padding:6px}
+.photo img{width:100%; height:auto;}
+.photo p{margin-top:.4em}
+.photo span{ background:#960; color:#fff; padding:0 .2em}
+.tip{ font-size:.8em; color:#4f6228; margin-bottom:.8em; line-height:1.5}
+
+.mobile-alert { display: none; color: #931200 }
+.pc-alert{ display: none;  color: #931200; margin-top:.6em; text-align:center}
+.success{ background:#2a7612 !important; color:#fff}
+
+footer { font-weight: bold; color: #54340A; text-align: center; line-height: 2; font-size: .8em; }
+
+.pc-alert {
+	-webkit-animation-name: shake;
+	-webkit-animation-duration:.2s;
+	-webkit-animation-iteration-count:1;
+	-webkit-animation-timing-function: linear;
+	-webkit-transform-origin:50% 100%;
+}
+@-webkit-keyframes shake {
+	0% { -webkit-transform:	translate(2px, 1px) rotate(0deg); }
+	20% { -webkit-transform:translate(-3px, 0px) rotate(1deg); }
+	40% { -webkit-transform:translate(1px, -1px) rotate(-1deg); }
+	60% { -webkit-transform:translate(-3px, 1px) rotate(0deg); }
+	80% { -webkit-transform:translate(-1px, -1px) rotate(1deg); }
+	100% {-webkit-transform:translate(1px, -2px) rotate(0deg); }
+}
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (max-width : 480px) {
+body { background: url(../img/bg-mobile.jpg) #fefded 0 0 fixed; }
+.container { width: 100%; margin: 0 auto; background: none; padding-bottom: 0; border-radius: 0; box-shadow: none }
+.flexchange{}
+.mobile-alert { width:95%; margin:0 auto .4em;}
+.pc-alert{ display:none}
+h1.title { font-size:1.1em; border-radius: 0; margin-bottom: -1px; }
+#calendar { width:95%; margin:.4em auto; float: none }
+.order-title{ margin-bottom:.2em}
+.order-deatil, .order-comfirm{ width: 95%; margin: .4em auto; float: none;}
+footer { line-height: 1.4; font-size: .6em; margin: .4em .6em; }
+}
+@media only screen and (min-width : 480px){
+.flexchange{ display: -moz-box; display: -webkit-box; display: box; padding:0 1em 0}
+.order-deatil { margin-left:1em}
+}
+.fc-header-title h2{ font-size:1em; line-height:2em}
